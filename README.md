@@ -37,7 +37,7 @@ And then execute:
 
     $ bundle exec rake js_routes_rails:export
 
-This will generate a JavaScript file in `app/assets/javascript/js-routes-rails.js`, which you can consume using the Asset Pipeline, for example:
+This will generate a JavaScript file in `app/assets/javascripts/js-routes-rails.js`, which you can consume using the Asset Pipeline, for example:
 
 
 ```ruby
