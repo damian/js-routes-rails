@@ -52,7 +52,7 @@ or in `application.js`
 
 ## Usage
 
-Once you've brought the exported file in to your project your now able to use the `JsRoutesRails` object which gives you access to all of your Rails URL helpers on the client.
+Once the generated file is in your project you're able to access the `JsRoutesRails` object which contains all the exported Rails URL helpers on the client.
 
 ```javascript
 JsRoutesRails.new_articles_path() // '/articles/new'
