@@ -41,7 +41,7 @@ This will generate a JavaScript file in `app/assets/javascript/js-routes-rails.j
 
 
 ```ruby
-javascript_include_tag 'js-routes-rails'
+<%= javascript_include_tag 'js-routes-rails' %>
 ```
 
 or in `application.js`
