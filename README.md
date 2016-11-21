@@ -1,6 +1,6 @@
 # Js::Routes::Rails
 
-Generates a JavaScript file containing 
+Generates a JavaScript file containing a predefined set of Rails URL helpers on the client.
 
 ## Installation
 
