@@ -9,7 +9,7 @@ module Js
       end
 
       def self.configuration
-        @configuration ||= OpenStruct.new
+        @configuration ||= OpenStruct.new(default_configuration_options)
       end
 
       def self.export!(routes = nil)
@@ -20,6 +20,15 @@ module Js
 
       def self.configure
         yield configuration
+      end
+
+      private
+
+      def self.default_configuration_options
+        {
+          output: ::Rails.root.join('app', 'assets', 'javascripts', 'js-routes-rails.js').to_s,
+          template: 'rails'
+        }
       end
     end
   end

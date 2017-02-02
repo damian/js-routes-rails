@@ -9,14 +9,12 @@ module Js
         end
 
         def export!
-          File.open(output_path, 'w') { |f| f.write(compiled) }
+          File.open(configuration.output, 'w') do |f|
+            f.write(compiled)
+          end
         end
 
         private
-
-        def output_path
-          ::Rails.root.join('app', 'assets', 'javascripts', 'js-routes-rails.js')
-        end
 
         def compiled
           b = binding
@@ -29,7 +27,15 @@ module Js
         end
 
         def template_path
-          File.join(Js::Routes.root, 'js-routes-rails-template.js')
+          File.join(template_root, "#{configuration.template}.js")
+        end
+
+        def template_root
+          File.join(Js::Routes.root, 'templates')
+        end
+
+        def configuration
+          @configuration ||= Js::Routes::Rails.configuration
         end
       end
     end

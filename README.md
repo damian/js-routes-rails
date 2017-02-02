@@ -39,7 +39,6 @@ And then execute:
 
 This will generate a JavaScript file in `app/assets/javascripts/js-routes-rails.js`, which you can consume using the Asset Pipeline, for example:
 
-
 ```ruby
 <%= javascript_include_tag 'js-routes-rails' %>
 ```
@@ -48,6 +47,15 @@ or in `application.js`
 
 ```javascript
 //= 'js-routes-rails'
+```
+
+You can also configure the location and format of the generated JavaScript file in your `application.rb`
+
+```ruby
+Js::Routes::Rails.configure do |c|
+  c.output = '/some/other/place.js'
+  c.template = 'commonjs'
+end
 ```
 
 ## Usage

@@ -16,6 +16,10 @@ module Rails
     end
   end
 
+  def self.root
+    Pathname.new(".")
+  end
+
   def self.application
     @app ||= App.new
   end

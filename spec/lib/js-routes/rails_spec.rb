@@ -1,13 +1,22 @@
 describe Js::Routes::Rails do
   describe ".class methods" do
-    it "should have a default configuration object" do
-      expect(described_class.configuration).to be_a OpenStruct
+    describe ".configuration object" do
+      it "should default the output path" do
+        expect(described_class.configuration.output).to eq("app/assets/javascripts/js-routes-rails.js")
+      end
+
+      it "should default the output template" do
+        described_class.configuration = nil
+        expect(described_class.configuration.template).to eq("rails")
+      end
     end
 
     it "allow us to override the default configuration object" do
       described_class.configure do |config|
-        expect(config).to be_a OpenStruct
+        config.template = 'commonjs'
       end
+
+      expect(described_class.configuration.template).to eq("commonjs")
     end
 
     describe "export!" do
