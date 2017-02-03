@@ -8,7 +8,7 @@ const JsRoutesRails = (function() {
 
   function format(string, options) {
     var str = string.toString();
-    for (option in options) {
+    for (var option in options) {
       str = str.replace(RegExp("\\:" + option, "gi"), options[option]);
     }
 
