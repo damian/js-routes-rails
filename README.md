@@ -54,7 +54,7 @@ You can also configure the location and format of the generated JavaScript file 
 ```ruby
 Js::Routes::Rails.configure do |c|
   c.output = '/some/other/place.js'
-  c.template = 'commonjs'
+  c.template = :commonjs
 end
 ```
 

@@ -27,7 +27,7 @@ module Js
       def self.default_configuration_options
         {
           output: ::Rails.root.join('app', 'assets', 'javascripts', 'js-routes-rails.js').to_s,
-          template: 'rails'
+          template: :rails
         }
       end
     end
