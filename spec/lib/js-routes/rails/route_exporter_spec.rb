@@ -8,8 +8,16 @@ describe Js::Routes::Rails::RouteExporter do
   end
 
   it "should generate a JavaScript file lib containing the routes and output it on disk" do
-    allow(File).to receive(:open).with(/.*app\/assets\/javascripts\/js-routes-rails.js/, "w")
+    fake_output = StringIO.new
+    output_path = Js::Routes::Rails.configuration.output
+    allow(File).to receive(:open).with(output_path, "w").and_yield(fake_output)
+
     subject.export!
+
+    subject.routes.each do |helper, path|
+      expect(fake_output.string).to include(helper)
+      expect(fake_output.string).to include(path)
+    end
   end
 
   context "when configured with a custom template file" do
