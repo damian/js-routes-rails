@@ -15,8 +15,11 @@ describe Js::Routes::Rails::RouteExporter do
   context "when configured with a custom template file" do
     let(:template_path) { "/foo/bar/template.js" }
 
-    before do
+    around do |example|
+      original = Js::Routes::Rails.configuration.template
       Js::Routes::Rails.configuration.template = template_path
+      example.run
+      Js::Routes::Rails.configuration.template = original
     end
 
     it "should render the custom template" do
