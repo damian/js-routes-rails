@@ -11,4 +11,24 @@ describe Js::Routes::Rails::RouteExporter do
     allow(File).to receive(:open).with(/.*app\/assets\/javascripts\/js-routes-rails.js/, "w")
     subject.export!
   end
+
+  context "when configured with a custom template file" do
+    let(:template_path) { "/foo/bar/template.js" }
+
+    before do
+      Js::Routes::Rails.configuration.template = template_path
+    end
+
+    it "should render the custom template" do
+      fake_template = "Hello world. 1 + 2 = <%= 1 + 2 %>"
+      allow(File).to receive(:read).with(template_path).and_return(fake_template)
+
+      fake_output = StringIO.new
+      output_path = Js::Routes::Rails.configuration.output
+      allow(File).to receive(:open).with(output_path, "w").and_yield(fake_output)
+
+      subject.export!
+      expect(fake_output.string).to eq("Hello world. 1 + 2 = 3")
+    end
+  end
 end

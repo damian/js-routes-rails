@@ -27,7 +27,12 @@ module Js
         end
 
         def template_path
-          File.join(template_root, "#{configuration.template}.js")
+          case configuration.template
+          when Symbol
+            File.join(template_root, "#{configuration.template}.js")
+          else
+            configuration.template
+          end
         end
 
         def template_root
