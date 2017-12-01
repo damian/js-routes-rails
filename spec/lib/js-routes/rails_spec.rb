@@ -7,16 +7,16 @@ describe Js::Routes::Rails do
 
       it "should default the output template" do
         described_class.configuration = nil
-        expect(described_class.configuration.template).to eq("rails")
+        expect(described_class.configuration.template).to eq(:rails)
       end
     end
 
     it "allow us to override the default configuration object" do
       described_class.configure do |config|
-        config.template = 'commonjs'
+        config.template = :commonjs
       end
 
-      expect(described_class.configuration.template).to eq("commonjs")
+      expect(described_class.configuration.template).to eq(:commonjs)
     end
 
     describe "export!" do
